@@ -1,6 +1,6 @@
 
 
-f = open(r'C:\Users\310282769\Desktop\aoc\day5\input.txt', 'r')
+f = open('input.txt', 'r')
 vec = []
 for line in f:
    vec.append(int(line))

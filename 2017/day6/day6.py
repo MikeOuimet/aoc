@@ -10,7 +10,7 @@ def get_largest(vec):
     return maxid, maxval
 
 
-f = open(r'C:\Users\310282769\Desktop\aoc\day6\input.txt', 'r')
+f = open('input.txt', 'r')
 
 for line in f:
    vec= line.split()

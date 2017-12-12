@@ -31,7 +31,7 @@ def find_culprit(weights,children, parent):
         
             
 
-f = open(r'C:\Users\310282769\Desktop\aoc\day7\input.txt', 'r')
+f = open('input.txt', 'r')
 rev_tree = {}
 tree = {}
 for line in f:

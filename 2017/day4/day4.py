@@ -13,7 +13,7 @@ def word_hashing(word):
 
 
 
-f = open(r'C:\Users\310282769\Desktop\aoc\day4\input.txt', 'r')
+f = open('input.txt', 'r')
 
 
 count = 0
