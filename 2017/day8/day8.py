@@ -1,5 +1,5 @@
 
-f = open(r'C:\Users\310282769\Desktop\aoc\day8\input.txt', 'r')
+f = open('input.txt', 'r')
 
 d = {}
 maxval = 0
