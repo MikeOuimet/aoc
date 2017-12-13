@@ -3,6 +3,7 @@ f = open('input.txt', 'r')
 
 d = {}
 #maxval = 0
+
 for line in f:
    statement= line.split()
    vec = copy.copy(statement)
@@ -17,19 +18,27 @@ for line in f:
    d[parent] = children
 
 
-connected = ['0']
-to_check = ['0']
+total = list(d.keys())
+seen = []
 
-while len(to_check)> 0:
-	x = to_check.pop()
-	newchildren = d[x]
-	for child in newchildren:
-		if child not in connected:
-			connected.append(child)
-			if child not in to_check:
-				to_check.append(child)
+tmp = 0
+for key in total:
+	if key not in seen:
+		seen.append(key)
+		connected = [key]
+		to_check = [key]
 
+		while len(to_check)> 0:
+			x = to_check.pop()
+			seen.append(x)
+			newchildren = d[x]
+			for child in newchildren:
+				if child not in connected:
+					connected.append(child)
+					if child not in to_check:
+						to_check.append(child)
 
-print(len(connected))
+		tmp += 1
+		#print(len(connected))
 
-
+print(tmp)
