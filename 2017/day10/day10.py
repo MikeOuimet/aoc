@@ -6,7 +6,7 @@ for char in input_vec:
 for el in to_append:
 	in_ascii.append(el)
 
-print(in_ascii)
+#print(in_ascii)
 
 def to_hex(val):
 	v = hex(val)[2:]
@@ -18,38 +18,37 @@ def to_hex(val):
 
 
 #input_vec = [106,118,236,1,130,0,235,254,59,205,2,87,129,25,255,118]
-cursor = 0
-skip = 0
 
+def knot_hash(in_ascii):
+	cursor = 0
+	skip = 0
+	data = [i for i in range(256)]
+	for cycle in range(64):
+		for size in in_ascii:
+			cp = []
+			for i in range(size):
+				cp.append(data[(i+cursor)%256])
+			cp.reverse()
+			for i in range(size):
+				data[(i+cursor)%256] = cp[i]
+			cursor += (size + skip)%256
+			skip +=1
 
-data = [i for i in range(256)]
+	count = 0
+	tmp = []
+	xor = 0
+	hex_val = ''
+	for i, el in enumerate(data):
+		count += 1
+		xor = xor^el
+		if count ==16:
+			count =0
+			tmp.append(xor)
+			hex_val += to_hex(xor)
+			xor = 0
 
-for cycle in range(64):
-	for size in in_ascii:
-		cp = []
-		for i in range(size):
-			cp.append(data[(i+cursor)%256])
-		cp.reverse()
-		for i in range(size):
-			data[(i+cursor)%256] = cp[i]
-		cursor += (size + skip)%256
-		skip +=1
-
-
-
-count = 0
-tmp = []
-xor = 0
-hex_val = ''
-for i, el in enumerate(data):
-	count += 1
-	xor = xor^el
-	if count ==16:
-		count =0
-		tmp.append(xor)
-		hex_val += to_hex(xor)
-		xor = 0
-print(tmp)
-print(hex_val)
+	return hex_val
 #print(data[0]*data[1])
+
+print(knot_hash(in_ascii))
 
