@@ -2,6 +2,8 @@ import time
 from numba import jit
 start = time.time()
 
+
+
 @jit
 def part_two():
 	data = 301
