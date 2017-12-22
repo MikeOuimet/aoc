@@ -6,24 +6,28 @@ x = 0
 y = 0
 visits = {}
 move = {'N': [[[-1, 0], [1, 0]], ['W', 'E']], 'S': [[[1, 0], [-1, 0]], ['E', 'W']], 'E': [[[0, 1], [0, -1]], ['N', 'S']], 'W': [[[0, -1], [0, 1]], ['S', 'N']]}
-for el in vec:
-    hops = int(el[1:])
-    for hop in range(hops):
-        if el[0] == 'L':
-            x += move[d][0][0][0]
-            y += move[d][0][0][1]
-        else:
-            x += move[d][0][1][0]
-            y += move[d][0][1][1]
+
+def hop(x, y, d, visits, move, new_d, hops):
+    for i in range(hops):
+        x += move[d][0][new_d][0]
+        y += move[d][0][new_d][1]
         if (x,y) in visits.keys():
-            print(abs(x) + abs(y))
-            break
+            return x, y, d, visits, True
+
         else:
             visits[(x,y)] = 1
-    
+    d = move[d][1][new_d]
+    return x, y, d, visits, False
+
+
+done = False
+for el in vec:
+    hops = int(el[1:])
     if el[0] == 'L':
-        d = move[d][1][0]
+        x, y, d, visits, done = hop(x, y, d, visits, move, 0, hops)
     else:
-        d = move[d][1][1]
+        x, y, d, visits, done = hop(x, y, d, visits, move, 1, hops)
+    if done:
+        break
 
 print(abs(x) + abs(y))
