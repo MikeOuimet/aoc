@@ -1,0 +1,40 @@
+	set f 1
+	set d 2
+		set e 2
+			set g d
+			mul g e
+			sub g b
+			jnz g 2
+			set f 0
+			sub e -1
+			set g e
+			sub g b
+			jnz g -8
+		sub d -1
+		set g d
+		sub g b
+		jnz g -13
+	jnz f 2
+	sub h -1
+	set g b
+	sub g c
+	jnz g 2
+	jnz 1 3
+	sub b -17
+jnz 1 -23
+
+g=0
+while b !=c:
+	f = 1
+	d = 2
+	while d != b:
+		e = 2
+		while e !=b:
+			if d*e == b:
+				f = 0
+			e += 1
+		d +=1
+	if f ==0:
+		h += 1
+
+	b +=17   # 1000x
