@@ -1,2 +1,2 @@
 # aoc
-Code for Advent of Code, mostly in Python
+Code for Advent of Code annual challenges, mostly in Python
